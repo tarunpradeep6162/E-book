@@ -1,12 +1,15 @@
 # Chapter 13: AWS Kubernetes: Build an EKS Platform with Terraform
 
+::: {.callout .failure}
 ## The Cluster Only Its Creator Understood
 
 The engineer who created EKS through the console leaves the company. Months later, nodes are full and a control-plane upgrade is required. Nobody knows which IAM roles, subnet tags, add-ons, or access entries were changed manually.
 
 The platform team can see the cluster but cannot reliably reproduce or administer it. A managed control plane reduced server maintenance; it did not remove ownership decisions.
+:::
 
 **EKS manages selected control-plane responsibilities. You still own identity, worker capacity, networking, upgrades, application state, and recovery.** Record those decisions in code and test them before the original administrator becomes a dependency.
+
 
 ## Split Cloud Provisioning from Workload Deployment
 
@@ -21,6 +24,18 @@ Use the multi-AZ network contract from earlier chapters. Private node subnets ne
 The widely used `terraform-aws-modules/eks/aws` module is community maintained, not an AWS-official Terraform module. The AWS provider supplies the underlying managed resources. Use an exact module version and review its inputs rather than mixing examples from different major releases.
 
 This example targets module 21.3.0, whose inputs include `name`, `kubernetes_version`, and `addons`. Older examples using `cluster_name` or `cluster_addons` should not be pasted into this configuration unchanged.
+
+### First, Read the Smallest Contract
+
+```hcl
+module "eks" {
+  source  = "terraform-aws-modules/eks/aws"
+  version = "21.3.0"
+  name    = "orders-platform"
+}
+```
+
+The module call identifies implementation and ownership. The complete configuration below supplies network placement, version selection, access, and capacity.
 
 ### eks.tf
 
@@ -185,14 +200,18 @@ This inventory becomes the baseline for upgrades and incident comparison: when b
 
 Test a denied administrative action as well as a permitted read, confirming the chosen identity respects the intended namespace and cluster boundaries.
 
-## Key Takeaways
+::: {.callout .protip}
+Record module, provider, add-on, identity, and node-image versions together.
+:::
 
+::: {.callout .takeaways}
 - **Managed control planes still require explicit platform ownership.**
 - **Pin the community module and use its version-specific inputs.**
 - **Separate cloud bootstrap from cluster configuration.**
 - **IRSA trusts a constrained issuer, subject, and audience.**
 - **Private endpoints require a tested administration path.**
 - **Upgrade and cleanup plans must include add-ons and persistent resources.**
+:::
 
 ## References
 

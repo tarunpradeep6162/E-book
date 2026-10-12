@@ -1,10 +1,12 @@
 # Chapter 19: GCP Without a Rewrite: Test the Limits of Portability
 
+::: {.callout .failure}
 ## The Friday Migration Mandate
 
 The CTO asks for a GCP deployment by Friday. The team assumes containers make the migration straightforward. The API starts, then fails because business code expects S3-specific signed URLs, IAM credential discovery, and AWS event payloads.
 
 The image was portable. The application contract was not. **Container portability does not imply service portability.** Identify provider-specific assumptions before estimating the migration, especially in storage, identity, events, and database features.
+:::
 
 ## Build a Capability Map
 
@@ -27,6 +29,17 @@ GKE Autopilot manages substantial node provisioning and configuration responsibi
 Autopilot admission can enforce or adjust workload settings. A privileged diagnostic DaemonSet that worked on your EKS lab may be rejected. Validate supported workload patterns before deciding the platform is interchangeable.
 
 This example provisions a custom VPC, subnet with secondary ranges, and private Autopilot cluster. It is a separate GCP Terraform root with its own credentials and remote backend. Enable the required project services before provisioning and verify quota and billing.
+
+### First, Read the Smallest Contract
+
+```hcl
+resource "google_compute_network" "platform" {
+  name                    = "orders-platform"
+  auto_create_subnetworks = false
+}
+```
+
+Begin with an explicit network instead of automatic subnet creation. The complete root below adds reviewed ranges, cluster placement, and upgrade policy.
 
 ### gke.tf
 
@@ -159,14 +172,18 @@ These tests define the portability contract. They let the team add a cloud-speci
 
 Treat an adapter exception as a reviewable product limitation with an owner, rather than silently falling back to a different storage behavior.
 
-## Key Takeaways
+::: {.callout .protip}
+Test provider-specific failure semantics at narrow application adapter boundaries.
+:::
 
+::: {.callout .takeaways}
 - **Containers are portable artifacts; managed-service contracts may not be.**
 - **Autopilot changes node ownership, not application responsibility.**
 - **Use cloud-specific identity, networking, and storage configuration.**
 - **Keep application adapters narrow and behaviorally tested.**
 - **Include data migration time and egress cost in the plan.**
 - **Document verified portability and explicit exceptions.**
+:::
 
 ## References
 

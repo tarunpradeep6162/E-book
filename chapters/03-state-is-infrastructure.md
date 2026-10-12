@@ -1,16 +1,19 @@
 # Chapter 3: State Is Infrastructure: Lock It, Protect It, Recover It
 
+::: {.callout .failure}
 ## Two Applies, One Broken Production Environment
 
 At 09:12, two engineers start production applies from separate laptops. Each has a copied local state file. One replaces an application instance; the other modifies its security group and deployment outputs.
 
 Neither execution sees the other’s lock. Both operate from an incomplete picture of ownership. A shared-file synchronization tool later overwrites one state copy with the other.
+:::
 
 The application loses connectivity. The surviving state records an instance already deleted by the first apply and omits resources created by the second. The team now has both an outage and an unreliable ownership ledger.
 
 This is logical state corruption, even if the JSON still parses. Concurrent writes through an unsafe shared filesystem can also damage the file itself. Do not blame Terraform for coordination your backend never provided.
 
 **One infrastructure ownership boundary requires one authoritative state and one coordinated writer.**
+
 
 ## Remote Storage Alone Is Not Enough
 
@@ -38,6 +41,10 @@ Use distinct identities for backend administration, workload execution, and reco
 
 The following belongs in the bootstrap root, not the workload root. Supply the approved account and existing execution-role name through non-secret inputs.
 
+Read these panels in sequence. They continue the same file; use the complete companion source when executing.
+
+### Identity and location inputs
+
 ```hcl
 variable "account_id" {
   type     = string
@@ -64,7 +71,11 @@ locals {
   bucket_name = "orders-prod-state-${var.account_id}"
   state_key   = "prod/aws/orders/terraform.tfstate"
 }
+```
 
+### Protection for the key and bucket
+
+```hcl
 resource "aws_kms_key" "state" {
   description             = "Terraform state encryption"
   enable_key_rotation     = true
@@ -105,7 +116,11 @@ resource "aws_s3_bucket_public_access_block" "state" {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
+```
 
+### Versioning, encryption, and transport controls
+
+```hcl
 resource "aws_s3_bucket_versioning" "state" {
   bucket = aws_s3_bucket.state.id
 
@@ -127,7 +142,11 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "state" {
     }
   }
 }
+```
 
+### Scoped outputs and remaining controls
+
+```hcl
 resource "aws_s3_bucket_policy" "tls_only" {
   bucket = aws_s3_bucket.state.id
 
@@ -318,8 +337,11 @@ For a stale lock, verify its owner has stopped and use `terraform force-unlock L
 
 Complete recovery by reviewing `terraform plan`, resolving unexpected deletions or replacements, and testing application behavior. Record lost ownership information and remediation. State recovery does not restore lost database records.
 
-## Key Takeaways
+::: {.callout .protip}
+Give state writers permission to delete only their own lock, not their state object.
+:::
 
+::: {.callout .takeaways}
 - **Use one authoritative, locked backend per ownership boundary.**
 - **Treat state and plans as sensitive, even when outputs are masked.**
 - **Enable native S3 locking explicitly; DynamoDB locking is deprecated.**
@@ -327,6 +349,7 @@ Complete recovery by reviewing `terraform plan`, resolving unexpected deletions 
 - **Scope state writes and lock deletion independently.**
 - **Versioning and KMS need tested recovery access.**
 - **Never force past state or lock safeguards without investigation.**
+:::
 
 ## References
 

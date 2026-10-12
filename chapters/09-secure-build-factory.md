@@ -1,12 +1,15 @@
 # Chapter 9: Secure the Build Factory: Separate Controllers, Agents, and Credentials
 
+::: {.callout .failure}
 ## A Dependency Script Finds the Deployment Keys
 
 A package's installation script runs during a Jenkins build. It reads the controller's home directory and retrieves an AWS credential with administrative permissions. The attacker creates a new cloud identity, disables selected logging, and copies database snapshots.
 
 The job ran on the built-in node because it was convenient. That node combined orchestration, credential storage, source execution, and cloud administration. A package installation became a control-plane compromise.
+:::
 
 **Treat build code as untrusted execution, even when it came from your own repository.** Review can reduce risk, but dependency scripts, build tools, and contributed pull requests still need constrained authority.
+
 
 ## Controller and Agent Are Different Trust Domains
 
@@ -164,14 +167,18 @@ This turns agent isolation into an observed property of filesystem, network, and
 
 Review inherited credential bindings whenever a job moves folders; organizational convenience must not silently expand the new job’s effective authority.
 
-## Key Takeaways
+::: {.callout .protip}
+Keep production credentials and release agents away from untrusted pull-request execution.
+:::
 
+::: {.callout .takeaways}
 - **Keep build execution off the controller.**
 - **Labels schedule work; authorization enforces trust boundaries.**
 - **Separate untrusted verification from credential-bearing releases.**
 - **Short-lived credentials reduce exposure, not excessive privilege.**
 - **Version JCasC and plugins, and protect recovery secrets.**
 - **Test agent isolation and role assumption explicitly.**
+:::
 
 ## References
 

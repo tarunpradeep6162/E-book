@@ -1,12 +1,21 @@
 # Chapter 15: Stateful Kubernetes: Storage, Databases, and Safe Migrations
 
+::: {.callout .failure}
 ## The Database Could Not Follow the Pod
 
 A node in AZ A fails. The database replacement is expected to run in AZ B, but its existing EBS volume belongs to AZ A. The scheduler reports a volume topology conflict, and the database remains unavailable.
 
 Kubernetes does not normally solve that conflict by moving an EBS volume across zones. EBS is zonal; changing Pod placement does not change that storage boundary. The outage came from assuming process replacement implied data mobility.
+:::
 
 **Schedule state with its storage constraints, and recover data through a tested replication or restore procedure.** Availability Zones are not interchangeable mount points.
+
+
+## Architecture at a Glance
+
+![An existing EBS volume stays in its zone. Cross-zone recovery creates or uses a different data copy.](images/15-storage-topology.svg){width=100%}
+
+
 
 ## PV, PVC, and StorageClass Have Different Owners
 
@@ -21,6 +30,18 @@ For EBS, use a supported EBS CSI driver with a narrowly scoped cloud identity. R
 ## Provision with Scheduling Context
 
 `WaitForFirstConsumer` delays provisioning until scheduling requirements are known. That helps avoid creating a volume in a zone incompatible with the eventual Pod. It does not make an existing zonal volume portable across zones.
+
+### First, Read the Smallest Contract
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: orders-ebs-gp3
+provisioner: ebs.csi.aws.com
+```
+
+This identifies the storage provisioner. The complete class below adds topology-aware binding, encryption, expansion, and retention policy.
 
 ### storage-class.yaml
 
@@ -138,7 +159,9 @@ kubectl -n data describe pvc data-postgres-0
 
 Inspect the PV's node affinity, the node's zone labels, and the underlying EBS volume. Create a synthetic row, replace the Pod, and verify persistence. Then simulate loss of the node in a lab with compatible replacement capacity in the same zone.
 
+::: {.callout .failure}
 A forced detach while the old writer is alive can risk data corruption. Confirm fencing and instance state before authorizing storage takeover. “The node is unreachable” is not proof that its database process cannot write.
+:::
 
 ## Managed Services Are a Tradeoff
 
@@ -188,14 +211,18 @@ The acceptance result should include the expanded mounted capacity, unchanged re
 
 Check retained cloud volumes after cleanup and assign an owner, so recovery data does not become an unidentified storage resource.
 
-## Key Takeaways
+::: {.callout .protip}
+Treat volume topology, database promotion, and schema recovery as separate mechanisms.
+:::
 
+::: {.callout .takeaways}
 - **Zonal storage does not follow arbitrary Pod placement.**
 - **WaitForFirstConsumer improves provisioning placement, not volume mobility.**
 - **A StatefulSet supplies identity and claims, not database replication.**
 - **Retain policies and encryption require recovery ownership.**
 - **Schema migration and application rollback are different operations.**
 - **Validate restoration with application transactions, not just Pod status.**
+:::
 
 ## References
 

@@ -1,12 +1,23 @@
 # Chapter 12: Kubernetes Beyond "It Runs": Orchestrate the Application
 
+::: {.callout .failure}
 ## The Pods That Never Came Back
 
 The team deploys three standalone Pods and calls the application highly available. A node fails, and the Pods assigned to it stop serving. There is no Deployment to create replacements on healthy capacity.
 
 A container restart policy can restart a process within a surviving Pod environment; it does not give a standalone Pod a replacement controller after node loss. The team confuses process recovery with workload reconciliation.
+:::
 
 **Declare the workload you want maintained, not just a process you want started.** Kubernetes needs a controller, a service contract, and schedulable capacity before it can replace failed application instances.
+
+
+## Architecture at a Glance
+
+![Terraform state drives cloud provisioning, while an image digest drives a Kubernetes workload release.](images/01-before-after.svg){width=100%}
+
+
+
+Think of a Deployment controller as a restaurant manager replacing a missing waiter. The manager still needs a trained replacement and available space. Kubernetes likewise needs a pullable image, valid configuration, and node capacity; it cannot replace missing database records.
 
 ## Deployments Own Replica Intent
 
@@ -21,6 +32,19 @@ Use a local disposable cluster before paying for managed capacity. Pin its Kuber
 ## The Deployment Contract
 
 Use the Chapter 6 image published by Chapter 10. Replace the image placeholder with its verified registry digest. The manifest deliberately does not embed a database password or make the API publicly accessible.
+
+### First, Read the Smallest Contract
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orders-api
+spec:
+  replicas: 2
+```
+
+This is the controller intent, not a deployable manifest. The complete Deployment below adds selectors, the Pod template, probes, resource budgets, and security settings.
 
 ### namespace.yaml
 
@@ -220,14 +244,18 @@ Capture evidence before deleting everything. A restart can remove useful timing 
 
 A good runbook follows these boundaries in order and names the owner responsible for each one.
 
-## Key Takeaways
+::: {.callout .protip}
+Use controllers, accurate readiness, and schedulable capacity to replace failed workloads.
+:::
 
+::: {.callout .takeaways}
 - **Use controllers for workloads that must be replaced.**
 - **Services discover matching ready endpoints; labels are part of the contract.**
 - **Probes, scheduling requests, and limits solve different problems.**
 - **Replica count needs placement and capacity to provide resilience.**
 - **Validate termination, identity, and configuration behavior.**
 - **Keep cloud and cluster ownership boundaries explicit.**
+:::
 
 ## References
 

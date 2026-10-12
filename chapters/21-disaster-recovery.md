@@ -1,10 +1,20 @@
 # Chapter 21: Failover Is a Data Problem: Engineer Disaster Recovery
 
+::: {.callout .failure}
 ## DNS Moved; Writes Still Failed
 
 The AWS application region becomes unavailable. Global DNS changes to Azure, and the API begins receiving traffic there. Its database is still a read-only standby. Order creation fails while monitoring reports that the recovery endpoint is reachable.
 
 The team prepared traffic routing but never rehearsed data promotion. Worse, nobody can prove the old primary is unable to resume writing. **A recovery endpoint is not a recovered service until write ownership and data correctness are established.**
+:::
+
+## Architecture at a Glance
+
+![Fence the old writer, approve the recovery point, promote, then route and verify.](images/21-failover.svg){width=100%}
+
+Explore the five recovery states in the [interactive companion](https://github.com/tarunpradeep6162/E-book/blob/main/interactive/failover.html). Download the file and open it in a browser; it performs no cloud operations.
+
+
 
 ## Active-Passive Has One Writer
 
@@ -71,7 +81,9 @@ Confirm the standby has required WAL and is consistent at the selected recovery 
 
 ## Promote the Approved Standby
 
+::: {.callout .failure}
 Only after documented fencing and data-loss approval:
+:::
 
 ```bash
 kubectl --context "$RECOVERY_CONTEXT" -n data exec postgres-0 -- \
@@ -168,14 +180,18 @@ This closes the recovery loop: uptime returns first, but correctness, reconcilia
 
 Keep the reconciliation owner assigned until ambiguous requests and duplicate external effects have been investigated and resolved.
 
-## Key Takeaways
+::: {.callout .protip}
+Record positive fencing evidence before approving a second writer.
+:::
 
+::: {.callout .takeaways}
 - **Failover requires write ownership, not just traffic routing.**
 - **Fence the old primary before promoting a secondary.**
 - **Measure recovery gaps from transaction evidence.**
 - **Use promotion commands appropriate to the actual database implementation.**
 - **DNS caching and existing connections complicate cutover.**
 - **Treat failback as a controlled data migration.**
+:::
 
 ## References
 

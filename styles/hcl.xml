@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="HCL" version="1" kateversion="2.4" section="Configuration" extensions="*.tf;*.tfvars">
+  <highlighting>
+    <list name="blocks">
+      <item>terraform</item><item>backend</item><item>provider</item>
+      <item>resource</item><item>data</item><item>variable</item>
+      <item>output</item><item>locals</item><item>module</item>
+      <item>validation</item><item>lifecycle</item>
+    </list>
+    <contexts>
+      <context name="Normal" attribute="Normal" lineEndContext="#stay">
+        <Detect2Chars char="/" char1="/" attribute="Comment" context="Comment"/>
+        <DetectChar char="#" attribute="Comment" context="Comment"/>
+        <DetectChar char="&quot;" attribute="String" context="String"/>
+        <keyword String="blocks" attribute="Keyword" context="#stay"/>
+        <RegExpr String="\b(true|false|null)\b" attribute="Literal" context="#stay"/>
+        <Float attribute="Number" context="#stay"/>
+        <Int attribute="Number" context="#stay"/>
+      </context>
+      <context name="Comment" attribute="Comment" lineEndContext="#pop"/>
+      <context name="String" attribute="String" lineEndContext="#stay">
+        <Detect2Chars char="\" char1="&quot;" attribute="String" context="#stay"/>
+        <DetectChar char="&quot;" attribute="String" context="#pop"/>
+      </context>
+    </contexts>
+    <itemDatas>
+      <itemData name="Normal" defStyleNum="dsNormal"/>
+      <itemData name="Keyword" defStyleNum="dsKeyword"/>
+      <itemData name="String" defStyleNum="dsString"/>
+      <itemData name="Comment" defStyleNum="dsComment"/>
+      <itemData name="Number" defStyleNum="dsDecVal"/>
+      <itemData name="Literal" defStyleNum="dsDataType"/>
+    </itemDatas>
+  </highlighting>
+</language>

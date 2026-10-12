@@ -1,18 +1,34 @@
 # Chapter 1: Stop Deploying Snowflakes: Design the Platform Before the Pipeline
 
+::: {.callout .failure}
 ## 03:07: The Server Nobody Can Rebuild
 
 The order API stops responding at 03:07. Your EC2 instance has failed, and the replacement starts with an empty application directory. The engineer who configured the original machine left six months ago.
 
 Git contains the application, but nobody knows which commit was running. PostgreSQL lived on the same server. A cron job supposedly copied backups somewhere; its credentials and destination were configured interactively.
+:::
 
 You are rebuilding an undocumented system under pressure. Improvised fixes create undocumented dependencies.
 
 **A server is replaceable only when its configuration, artifacts, access requirements, and recovery procedures exist outside it.**
 
+
+## Architecture at a Glance
+
+![Separate cloud ownership, workload releases, and durable data.](images/01-before-after.svg){width=100%}
+
+
+
+The public companion repository contains the exact code examples.
+
+```bash
+git clone https://github.com/tarunpradeep6162/E-book.git
+cd E-book/examples
+```
+
 ## Four Lifecycles, Four Owners
 
-Our reference workload contains an HTTP order API, a background worker, and PostgreSQL. The API persists orders and work records in a database transaction; the worker claims pending work and processes it with idempotent handlers. 
+Our reference workload contains an HTTP order API, a background worker, and PostgreSQL. The API commits orders and work records; idempotent workers process pending work. 
 
 Separate the platform into four lifecycles:
 
@@ -39,7 +55,7 @@ Separate state by meaningful operational boundaries: bootstrap services, shared 
 
 ### Runtime Configuration: Change Behavior Without Rebuilding
 
-An API image should not contain a production database password or environment-specific hostname. Inject configuration when the workload starts, validate required values, and fail clearly when configuration is invalid.
+Inject validated configuration at startup. Keep environment endpoints and database passwords outside the image.
 
 Version non-secret configuration. Store only secret references in Git, with secret values held in a dedicated secret manager. Document who creates, rotates, retrieves, and recovers those secrets.
 
@@ -65,7 +81,7 @@ For this book, use provisional targets that must later be demonstrated:
 | Production disaster RPO | 5 minutes | Gap between failure time and newest recoverable committed data |
 | Jenkins recovery | RTO 4 hours; RPO 24 hours | Restore controller configuration and resume a test pipeline |
 
-A request-based SLO does not directly produce a downtime allowance. Under a separate time-based availability calculation, 99.9% over 30 days permits approximately 43 minutes of unavailability. Choose one definition and keep the arithmetic consistent.
+Request-based availability and downtime calculations differ. A separate time-based 99.9% target over 30 days permits approximately 43 minutes of unavailability.
 
 **RTO includes detection, decision-making, provisioning, restoration, and validation.** A restore command completing in fifteen minutes does not prove a fifteen-minute RTO.
 

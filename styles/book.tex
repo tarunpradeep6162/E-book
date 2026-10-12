@@ -1,0 +1,71 @@
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{fvextra}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usepackage{xurl}
+\definecolor{Accent}{HTML}{5E35B1}
+\definecolor{Ink}{HTML}{1E293B}
+\definecolor{CodeBG}{HTML}{282A36}
+\definecolor{CodeFG}{HTML}{F8F8F2}
+\definecolor{FailureBG}{HTML}{FFF1F2}
+\definecolor{FailureInk}{HTML}{DC2626}
+\AtBeginDocument{\color{Ink}}
+\AtBeginDocument{\hypersetup{colorlinks=true,linkcolor=Accent,urlcolor=Accent}}
+\setstretch{1.55}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\titleformat{\chapter}[display]
+  {\sffamily\bfseries\color{Accent}\raggedright}
+  {}{0pt}{\fontsize{32}{36}\selectfont}
+\titlespacing*{\chapter}{0pt}{18mm}{10mm}
+\titleformat{\section}
+  {\sffamily\bfseries\color{Ink}\fontsize{21}{26}\selectfont}
+  {}{0pt}{}
+\titlespacing*{\section}{0pt}{9mm}{3mm}
+\titleformat{\subsection}
+  {\sffamily\bfseries\color{Accent}\fontsize{14}{19}\selectfont}
+  {}{0pt}{}
+\titlespacing*{\subsection}{0pt}{6mm}{2mm}
+
+% The Lua filter owns the panel; remove Pandoc's nested background.
+\renewenvironment{Shaded}{}{}
+\RecustomVerbatimEnvironment{Highlighting}{Verbatim}{
+  commandchars=\\\{\},
+  breaklines=true,
+  breakanywhere=true,
+  fontsize=\fontsize{9}{12}\selectfont,
+  tabsize=2
+}
+\tcbset{codebase/.style={
+  enhanced,colback=CodeBG,colframe=CodeBG,coltext=CodeFG,
+  boxrule=0pt,arc=2mm,left=4mm,right=4mm,top=3mm,bottom=3mm,
+  before skip=5mm,after skip=5mm,before upper={\setstretch{1}}
+}}
+\newtcolorbox{ShortCodePanel}{codebase}
+\newtcolorbox{LongCodePanel}{codebase,breakable,lines before break=4}
+\newcommand{\FailureIcon}{%
+  \tikz[baseline=-0.5ex]\node[fill=FailureInk,text=white,
+  circle,inner sep=1.5pt,font=\bfseries\small]{!};}
+\newtcolorbox{FailureBox}{
+  enhanced,colback=FailureBG,colframe=FailureInk,
+  coltext=Ink,boxrule=0pt,borderline west={1mm}{0pt}{FailureInk},
+  arc=2mm,left=4mm,right=4mm,top=3mm,bottom=3mm,
+  title={\FailureIcon\quad WARNING},
+  colbacktitle=FailureBG,coltitle=FailureInk,
+  fonttitle=\sffamily\bfseries,before skip=5mm,after skip=5mm
+}
+\newtcolorbox{TakeawaysBox}{
+  enhanced,colback=Ink,colframe=Ink,coltext=white,
+  boxrule=0pt,arc=2mm,left=4mm,right=4mm,top=3mm,bottom=3mm,
+  title={KEY TAKEAWAYS},colbacktitle=Ink,coltitle=white,
+  fonttitle=\sffamily\bfseries,before skip=5mm,after skip=5mm
+}
+
+\definecolor{TipBG}{HTML}{ECFDF5}
+\definecolor{TipInk}{HTML}{047857}
+\newtcolorbox{ProTipBox}{enhanced,colback=TipBG,colframe=TipInk,
+coltext=Ink,boxrule=0pt,borderline west={1mm}{0pt}{TipInk},arc=2mm,
+left=4mm,right=4mm,top=3mm,bottom=3mm,title={PRO TIP},colbacktitle=TipBG,
+coltitle=TipInk,fonttitle=\sffamily\bfseries,before skip=5mm,after skip=5mm}

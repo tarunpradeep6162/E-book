@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="960" height="500" preserveAspectRatio="xMinYMin meet" viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="960" height="500"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-500)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="960" height="500" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="24" y="458" style="font-family: Helvetica-Bold; font-size: 25px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,916) scale(1,-1)">Jenkins: replace compute, retain its home</text>
+			<text x="24" y="430" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,860) scale(1,-1)">A persistent mount is necessary; independent backup is still required.</text>
+			<rect x="30" y="210" width="390" height="195" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="46" y="377" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,754) scale(1,-1)">Disposable EC2 instance</text>
+			<text x="46" y="353" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,706) scale(1,-1)">Docker runs Jenkins</text>
+			<text x="46" y="333" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,666) scale(1,-1)">No builds on the controller</text>
+			<rect x="65" y="245" width="320" height="70" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="81" y="287" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,574) scale(1,-1)">/var/jenkins_home</text>
+			<text x="81" y="263" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,526) scale(1,-1)">Bind mount, not container writable layer</text>
+			<rect x="500" y="240" width="420" height="130" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="516" y="342" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,684) scale(1,-1)">Retained encrypted EBS</text>
+			<rect x="880" y="329" width="20" height="24" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<ellipse cx="890.0" cy="353.0" rx="10.0" ry="4.0" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,91%,99%); fill-rule: evenodd;"/>
+			<ellipse cx="890.0" cy="329.0" rx="10.0" ry="4.0" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="516" y="318" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,636) scale(1,-1)">Filesystem UUID mounted at /srv/jenkins</text>
+			<text x="516" y="298" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,596) scale(1,-1)">Same-AZ attachment; verified ownership</text>
+			<path d="M 385,280 L 500,280 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="500 280, 491.7105 283.5048, 491.7105 276.4952" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<text x="450.5" y="290.0" style="font-family: Helvetica; font-size: 12px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,580) scale(1,-1)">Mount</text>
+			<rect x="500" y="80" width="420" height="100" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="516" y="152" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,304) scale(1,-1)">Protected snapshot / backup</text>
+			<text x="516" y="128" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,256) scale(1,-1)">Restore into another AZ when needed</text>
+			<path d="M 710,240 L 710,180 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="710 180, 713.5048 188.2895, 706.4952 188.2895" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<text x="718.0" y="220.0" style="font-family: Helvetica; font-size: 12px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,440) scale(1,-1)">Quiesce and back up</text>
+			<text x="30" y="80" style="font-family: Helvetica-Bold; font-size: 17px;fill: rgb(72%,10%,10%); stroke:none;" transform="translate(0,160) scale(1,-1)">Fail closed if the intended mount is missing.</text>
+		</g>
+	</g>
+</svg>

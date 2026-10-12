@@ -78,7 +78,7 @@
   },
   {
     "chapter": 2,
-    "file": "examples/chapter-02/07-main.tf",
+    "file": "examples/chapter-02/terraform.tfvars.example",
     "language": "hcl",
     "status": "Requires chapter prerequisites; snippets may be partial",
     "placeholders": false
@@ -113,7 +113,7 @@
   },
   {
     "chapter": 3,
-    "file": "examples/chapter-03/03-backend.tf",
+    "file": "examples/chapter-03/state-writer-policy.tf",
     "language": "hcl",
     "status": "Requires chapter prerequisites; snippets may be partial",
     "placeholders": false
@@ -162,49 +162,49 @@
   },
   {
     "chapter": 5,
-    "file": "examples/chapter-05/modules__network__versions.tf",
+    "file": "examples/chapter-05/modules/network/versions.tf",
     "language": "hcl",
     "status": "Requires chapter prerequisites; snippets may be partial",
     "placeholders": false
   },
   {
     "chapter": 5,
-    "file": "examples/chapter-05/modules__network__variables.tf",
+    "file": "examples/chapter-05/modules/network/variables.tf",
     "language": "hcl",
     "status": "Requires chapter prerequisites; snippets may be partial",
     "placeholders": false
   },
   {
     "chapter": 5,
-    "file": "examples/chapter-05/modules__network__main.tf",
+    "file": "examples/chapter-05/modules/network/main.tf",
     "language": "hcl",
     "status": "Requires chapter prerequisites; snippets may be partial",
     "placeholders": false
   },
   {
     "chapter": 5,
-    "file": "examples/chapter-05/modules__network__outputs.tf",
+    "file": "examples/chapter-05/modules/network/outputs.tf",
     "language": "hcl",
     "status": "Requires chapter prerequisites; snippets may be partial",
     "placeholders": false
   },
   {
     "chapter": 5,
-    "file": "examples/chapter-05/environments__dev__main.tf",
+    "file": "examples/chapter-05/environments/dev/main.tf",
     "language": "hcl",
     "status": "Requires chapter prerequisites; snippets may be partial",
     "placeholders": false
   },
   {
     "chapter": 5,
-    "file": "examples/chapter-05/environments__prod__main.tf",
+    "file": "examples/chapter-05/environments/prod/main.tf",
     "language": "hcl",
     "status": "Requires chapter prerequisites; snippets may be partial",
     "placeholders": false
   },
   {
     "chapter": 5,
-    "file": "examples/chapter-05/08-environments__prod__main.tf",
+    "file": "examples/chapter-05/migration-example.tf",
     "language": "hcl",
     "status": "Requires chapter prerequisites; snippets may be partial",
     "placeholders": false

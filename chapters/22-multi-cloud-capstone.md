@@ -1,12 +1,15 @@
 # Chapter 22: Break It Before Production: The Multi-Cloud Capstone
 
+::: {.callout .failure}
 ## Green Dashboards, Missing Packets
 
 Launch day begins with healthy Pods and a successful deployment. Half the application's requests time out because an intermittent network path drops packets. The health endpoint uses a different path, and the monitoring dashboard stays green.
 
 Staging had tested only successful startup. Nobody had interrupted a dependency, replaced a node under load, or verified that customer-impact alerts reached an operator.
+:::
 
 **Operational readiness requires observed behavior under defined failures.** A platform is credible when another engineer can provision, diagnose, recover, and retire it using documented procedures and approved identities.
+
 
 ## State the Experiment Before Creating the Fault
 
@@ -122,7 +125,9 @@ A pipeline retry must not repeat destructive infrastructure changes or duplicate
 
 ## Experiment Four: Make State Unavailable
 
+::: {.callout .failure}
 Do not delete a production state bucket to demonstrate resilience. In a dedicated backend lab, temporarily remove the test writer's access or introduce a controlled backend outage and verify plans/applies fail closed.
+:::
 
 The expected result is existing workloads continue running while infrastructure changes stop. An agent must not fall back to local state and begin managing the same infrastructure as a fresh root.
 
@@ -164,14 +169,18 @@ Assign each unexpected result an owner, severity, and verification test. Repeat 
 
 Keep the final readiness decision linked to those results so the next operator understands both tested guarantees and unresolved limits.
 
-## Key Takeaways
+::: {.callout .protip}
+Give every experiment an independent stop mechanism and prove ordinary controls return afterward.
+:::
 
+::: {.callout .takeaways}
 - **Define a hypothesis, target, abort condition, and rollback before injecting failure.**
 - **Use dedicated lab environments and synthetic data.**
 - **Test abrupt failures separately from voluntary maintenance.**
 - **Prove alert delivery and data correctness, not just recovery of processes.**
 - **Keep CI and state outages from stopping existing workloads.**
 - **Publish operational evidence and unresolved limitations honestly.**
+:::
 
 ## References
 

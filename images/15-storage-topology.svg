@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="960" height="540" preserveAspectRatio="xMinYMin meet" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="960" height="540"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-540)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="960" height="540" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="24" y="498" style="font-family: Helvetica-Bold; font-size: 25px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,996) scale(1,-1)">Stateful Kubernetes: a volume has a zone</text>
+			<text x="24" y="470" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,940) scale(1,-1)">WaitForFirstConsumer chooses compatible placement; it does not move existing EBS.</text>
+			<rect x="30" y="100" width="410" height="320" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="46" y="392" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,784) scale(1,-1)">Availability Zone A</text>
+			<rect x="60" y="275" width="350" height="80" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="76" y="327" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,654) scale(1,-1)">StatefulSet Pod postgres-0</text>
+			<text x="76" y="303" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,606) scale(1,-1)">Scheduled on compatible node</text>
+			<rect x="60" y="135" width="350" height="85" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="76" y="192" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,384) scale(1,-1)">PVC -&gt; PV -&gt; EBS</text>
+			<rect x="370" y="179" width="20" height="24" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<ellipse cx="380.0" cy="203.0" rx="10.0" ry="4.0" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,91%,99%); fill-rule: evenodd;"/>
+			<ellipse cx="380.0" cy="179.0" rx="10.0" ry="4.0" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="76" y="168" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,336) scale(1,-1)">Volume remains in AZ A</text>
+			<path d="M 230,275 L 230,220 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="230 220, 233.5048 228.2895, 226.4952 228.2895" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<text x="238.0" y="257.5" style="font-family: Helvetica; font-size: 12px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,515) scale(1,-1)">Mount</text>
+			<rect x="520" y="100" width="410" height="320" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="536" y="392" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,784) scale(1,-1)">Availability Zone B</text>
+			<rect x="550" y="275" width="350" height="80" rx="10" ry="10" style="stroke: rgb(72%,10%,10%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(100%,94%,94%); fill-rule: evenodd;"/>
+			<text x="566" y="327" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,654) scale(1,-1)">Replacement Pod</text>
+			<text x="566" y="303" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,606) scale(1,-1)">Cannot attach AZ A volume here</text>
+			<rect x="550" y="135" width="350" height="85" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="566" y="192" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,384) scale(1,-1)">Recovery path</text>
+			<text x="566" y="168" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,336) scale(1,-1)">Replication or snapshot -&gt; new volume</text>
+			<path d="M 410,180 L 550,180 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2; stroke-dasharray: 5, 4;"/>
+			<polygon points="550 180, 541.7105 183.5048, 541.7105 176.4952" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<text x="488.0" y="190.0" style="font-family: Helvetica; font-size: 12px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,380) scale(1,-1)">Restore, not attach</text>
+		</g>
+	</g>
+</svg>

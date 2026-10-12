@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="960" height="540" preserveAspectRatio="xMinYMin meet" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="960" height="540"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-540)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="960" height="540" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="24" y="498" style="font-family: Helvetica-Bold; font-size: 25px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,996) scale(1,-1)">VPC: placement, routing, and permitted callers</text>
+			<text x="24" y="470" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,940) scale(1,-1)">Public/private labels do not replace application authorization.</text>
+			<rect x="24" y="45" width="912" height="390" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="40" y="407" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,814) scale(1,-1)">AWS VPC 10.40.0.0/16</text>
+			<rect x="48" y="80" width="408" height="295" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(93%,96%,100%); fill-rule: evenodd;"/>
+			<text x="64" y="347" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,694) scale(1,-1)">Public subnet 10.40.0.0/24</text>
+			<text x="64" y="323" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,646) scale(1,-1)">Route to Internet Gateway</text>
+			<rect x="504" y="80" width="408" height="295" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(92%,99%,96%); fill-rule: evenodd;"/>
+			<text x="520" y="347" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,694) scale(1,-1)">Private subnet 10.40.10.0/24</text>
+			<text x="520" y="323" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,646) scale(1,-1)">No direct Internet Gateway route</text>
+			<rect x="75" y="240" width="350" height="78" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="91" y="290" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,580) scale(1,-1)">Load balancer</text>
+			<text x="91" y="266" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,532) scale(1,-1)">Public entry point: reviewed TLS</text>
+			<rect x="75" y="125" width="350" height="78" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="91" y="175" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,350) scale(1,-1)">NAT gateway</text>
+			<text x="91" y="151" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,302) scale(1,-1)">Outbound path, not an inbound firewall</text>
+			<rect x="530" y="240" width="350" height="78" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="546" y="290" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,580) scale(1,-1)">Application instances</text>
+			<text x="546" y="266" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,532) scale(1,-1)">No public IP; SSM administration</text>
+			<rect x="530" y="125" width="350" height="78" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="546" y="175" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,350) scale(1,-1)">PostgreSQL database</text>
+			<rect x="840" y="162" width="20" height="24" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<ellipse cx="850.0" cy="186.0" rx="10.0" ry="4.0" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,91%,99%); fill-rule: evenodd;"/>
+			<ellipse cx="850.0" cy="162.0" rx="10.0" ry="4.0" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="546" y="151" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,302) scale(1,-1)">Only authorized application connections</text>
+			<path d="M 425,280 L 530,280 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="530 280, 521.7105 283.5048, 521.7105 276.4952" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<text x="485.5" y="290.0" style="font-family: Helvetica; font-size: 12px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,580) scale(1,-1)">HTTPS</text>
+			<path d="M 710,240 L 710,203 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="710 203, 713.5048 211.2895, 706.4952 211.2895" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<text x="718.0" y="231.5" style="font-family: Helvetica; font-size: 12px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,463) scale(1,-1)">5432</text>
+			<path d="M 530,145 L 425,145 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="425 145, 433.2895 141.4952, 433.2895 148.5048" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<text x="485.5" y="155.0" style="font-family: Helvetica; font-size: 12px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,310) scale(1,-1)">Outbound</text>
+			<text x="40" y="20" style="font-family: Helvetica; font-size: 12px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,40) scale(1,-1)">Conceptual production component view; Chapter 4 executable lab provisions a private SSM instance.</text>
+		</g>
+	</g>
+</svg>

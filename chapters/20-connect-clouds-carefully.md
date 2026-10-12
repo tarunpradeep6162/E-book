@@ -1,10 +1,18 @@
 # Chapter 20: Connect Clouds Carefully: Identity, Routing, and Data Boundaries
 
+::: {.callout .failure}
 ## The Tunnel Was Up; Traffic Went Nowhere
 
 The AWS-Azure VPN reports established tunnels. The application still cannot reach the recovery database. Both clouds use `10.0.0.0/16`, so hosts treat the destination as local rather than sending it across the intended route.
 
 The network dashboard is green because tunnel establishment succeeded. The application path remains wrong. **Connectivity is an end-to-end route and authorization contract, not a tunnel-status icon.**
+:::
+
+## Architecture at a Glance
+
+![The tunnel, return route, DNS, and identity checks all participate in a working transaction.](images/20-cross-cloud.svg){width=100%}
+
+
 
 ## Allocate Addresses Before Connecting
 
@@ -146,14 +154,18 @@ Keep an independent rollback path with the prior approved configuration availabl
 
 Verify rotation alarms reach the operator before beginning; an interrupted replication path without notification can invalidate the recovery objective.
 
-## Key Takeaways
+::: {.callout .protip}
+Verify both peers, both route directions, and private DNS from the actual caller.
+:::
 
+::: {.callout .takeaways}
 - **Tunnel establishment is only one part of end-to-end connectivity.**
 - **Plan non-overlapping addresses across every network layer.**
 - **Configure both peers and both route directions explicitly.**
 - **DNS and inspection need independent tested paths.**
 - **Measure transaction latency, replication catch-up, and egress cost.**
 - **Keep recovery configuration usable without the failed cloud.**
+:::
 
 ## References
 

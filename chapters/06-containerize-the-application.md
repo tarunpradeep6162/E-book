@@ -1,12 +1,17 @@
 # Chapter 6: Build Once, Run Consistently: Containerize the Application
 
+::: {.callout .failure}
 ## Friday's Different Runtime
 
 The release worked on the developer's laptop. Production fails during startup because the deployment server resolves a newer dependency, uses a different interpreter, and lacks a shared library. Someone installs packages directly on the host while customers retry their orders.
 
 The next deployment fails differently. Yesterday's emergency packages remain, but nobody recorded them. The server is now an undocumented build environment and runtime simultaneously.
+:::
 
 Containers address packaging consistency; they do not eliminate architecture, kernel, networking, or configuration differences. **Build a reviewed artifact once, then deploy that artifact by immutable digest.** Do not build production from whichever source happens to be on the server.
+
+
+A Docker image is like a standardized shipping container: a consistent package travels between compatible hosts. The analogy stops at compatibility; CPU architecture, kernel capabilities, credentials, and external data still need explicit contracts.
 
 ## Define the Application Contract
 
@@ -15,6 +20,18 @@ This chapter uses a small Python HTTP API with the standard library, keeping the
 A production dependency set must be locked and verified separately. For Python packages, use an approved lock workflow and hashed requirements for the selected platform. Native dependencies can differ by architecture; testing on an ARM laptop does not validate an AMD64 release.
 
 The process listens on port 8080, exposes `/healthz` and `/readyz`, writes no persistent data locally, and reads configuration at startup. The real order service must make readiness represent its ability to serve requests without turning every transient database slowdown into mass restart behavior.
+
+### First, Read the Smallest Contract
+
+```dockerfile
+ARG PYTHON_BASE
+FROM ${PYTHON_BASE}
+WORKDIR /app
+COPY app.py /app/app.py
+CMD ["python", "/app/app.py"]
+```
+
+This shows the packaging contract only. The complete Dockerfile below adds build separation, a non-root identity, and explicit runtime behavior.
 
 ### app.py
 
@@ -198,14 +215,18 @@ Image size is an operational input: larger images increase cold-start transfer t
 
 The release fixture deliberately avoids pretending that a fabricated lock file proves dependency integrity. Once dependencies are real, their ownership, updates, and verification become part of the repository's acceptance gates.
 
-## Key Takeaways
+::: {.callout .protip}
+Promote the tested registry digest without rebuilding for each environment.
+:::
 
+::: {.callout .takeaways}
 - **Containers package an execution contract; they do not prove production readiness.**
 - **Pin the base image and promote the tested final digest.**
 - **Keep build tools, secrets, and durable data outside runtime layers.**
 - **Run non-root with explicit writable locations and minimal capabilities.**
 - **Test signal handling, readiness, and the actual built image.**
 - **Treat dependency and architecture selection as reviewed inputs.**
+:::
 
 ## References
 

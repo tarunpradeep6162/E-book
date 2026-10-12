@@ -1,4 +1,4 @@
-# Verification - first complete manuscript
+# Verification - illustrated edition
 
 ## Passed
 
@@ -28,3 +28,13 @@ Terraform provider-backed validate and mock-provider tests remain blocked by an 
 ## Scope
 
 The complete manuscript and companion snippets are finished as an educational review edition. They do not constitute a verified production deployment. Partial templates and integration prerequisites are labeled in the chapter and companion manifest. No paid cloud resources or publishing accounts were created.
+
+## Illustrated-edition checks
+
+- Seven diagrams generated as editable SVG and vector PDF, used in eight chapter locations.
+- Diagram source distinguishes Terraform provisioning from workload deployment, zonal volume attachment from recovery, and asynchronous self-managed standby replication from managed-service assumptions.
+- Inter and JetBrains Mono embedded/bundled with font licenses; red warning, green pro-tip, and dark takeaway panels applied.
+- All 22 chapter word-count bounds still pass after additions.
+- Recovery explorer gate tests pass using a DOM stub: either missing prerequisite blocks promotion, and revoking a prerequisite returns to the fencing stage. This is logic verification, not a real-cloud or browser-device certification.
+- Illustrated EPUB passed EPUBCheck 5.3.0 after external SVG DOCTYPE declarations were removed.
+- Final PDF text-bound check and rendered-page review were repeated. Prior live-infrastructure limitations remain unchanged.

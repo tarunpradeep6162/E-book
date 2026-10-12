@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="960" height="600" preserveAspectRatio="xMinYMin meet" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="960" height="600"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-600)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="960" height="600" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="24" y="558" style="font-family: Helvetica-Bold; font-size: 25px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,1116) scale(1,-1)">From snowflake to declared platform</text>
+			<text x="24" y="530" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,1060) scale(1,-1)">Configuration, artifacts, and durable data have separate owners.</text>
+			<rect x="24" y="80" width="420" height="400" rx="10" ry="10" style="stroke: rgb(99%,64%,68%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(100%,94%,94%); fill-rule: evenodd;"/>
+			<text x="40" y="452" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,904) scale(1,-1)">BEFORE: one undocumented host</text>
+			<text x="40" y="428" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,856) scale(1,-1)">Mutable packages + application + database</text>
+			<rect x="44" y="350" width="180" height="70" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="60" y="392" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,784) scale(1,-1)">Console edits</text>
+			<rect x="230" y="350" width="180" height="70" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="246" y="392" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,784) scale(1,-1)">Local secrets</text>
+			<rect x="60" y="240" width="180" height="70" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="76" y="282" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,564) scale(1,-1)">Unknown release</text>
+			<rect x="235" y="140" width="180" height="70" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="251" y="182" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,364) scale(1,-1)">Database files</text>
+			<rect x="375" y="169" width="20" height="24" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<ellipse cx="385.0" cy="193.0" rx="10.0" ry="4.0" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,91%,99%); fill-rule: evenodd;"/>
+			<ellipse cx="385.0" cy="169.0" rx="10.0" ry="4.0" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<path d="M 134,350 L 325,210 Z" style="stroke: rgb(72%,10%,10%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="325 210, 320.3861 217.7274, 316.2422 212.0739" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(72%,10%,10%); fill-rule: evenodd;"/>
+			<path d="M 320,350 L 145,310 Z" style="stroke: rgb(72%,10%,10%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="145 310, 153.8621 308.4305, 152.3002 315.2638" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(72%,10%,10%); fill-rule: evenodd;"/>
+			<path d="M 145,240 L 325,210 Z" style="stroke: rgb(72%,10%,10%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="325 210, 317.3994 214.8199, 316.2471 207.9057" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(72%,10%,10%); fill-rule: evenodd;"/>
+			<path d="M 325,140 L 130,350 Z" style="stroke: rgb(72%,10%,10%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="130 350, 133.0724 341.5407, 138.2089 346.3103" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(72%,10%,10%); fill-rule: evenodd;"/>
+			<rect x="492" y="80" width="444" height="400" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="508" y="452" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,904) scale(1,-1)">AFTER: explicit ownership</text>
+			<rect x="514" y="348" width="180" height="70" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="530" y="390" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,780) scale(1,-1)">Terraform + state</text>
+			<text x="530" y="366" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,732) scale(1,-1)">Cloud resource ownership</text>
+			<rect x="718" y="348" width="194" height="70" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="734" y="390" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,780) scale(1,-1)">Image digest</text>
+			<text x="734" y="366" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,732) scale(1,-1)">Workload release input</text>
+			<rect x="530" y="215" width="366" height="92" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="546" y="279" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,558) scale(1,-1)">Kubernetes cluster</text>
+			<text x="546" y="255" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,510) scale(1,-1)">Controllers replace Pods; policies govern traffic</text>
+			<rect x="530" y="110" width="366" height="65" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="546" y="147" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,294) scale(1,-1)">Durable database</text>
+			<rect x="856" y="134" width="20" height="24" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<ellipse cx="866.0" cy="158.0" rx="10.0" ry="4.0" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,91%,99%); fill-rule: evenodd;"/>
+			<ellipse cx="866.0" cy="134.0" rx="10.0" ry="4.0" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="546" y="123" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,246) scale(1,-1)">Backups and recovery are independent</text>
+			<path d="M 604,348 L 604,307 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="604 307, 607.5048 315.2895, 600.4952 315.2895" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<text x="612.0" y="337.5" style="font-family: Helvetica; font-size: 12px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,675) scale(1,-1)">Provision</text>
+			<path d="M 810,348 L 810,307 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="810 307, 813.5048 315.2895, 806.4952 315.2895" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<text x="818.0" y="337.5" style="font-family: Helvetica; font-size: 12px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,675) scale(1,-1)">Deploy</text>
+			<path d="M 710,215 L 710,175 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="710 175, 713.5048 183.2895, 706.4952 183.2895" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<text x="718.0" y="205.0" style="font-family: Helvetica; font-size: 12px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,410) scale(1,-1)">Transactions</text>
+		</g>
+	</g>
+</svg>

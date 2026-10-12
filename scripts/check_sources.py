@@ -18,5 +18,5 @@ for p in chapters:
  count=len(p.read_text().split())
  assert 1500<=count<=2000, f'{p.name}: {count} words'
  if not p.name.startswith(('01-','02-')):
-  assert '## Key Takeaways' in p.read_text(), p.name
+  assert '::: {.callout .takeaways}' in p.read_text(), p.name
 print('22 chapters, length bounds, and takeaway sections: PASS')

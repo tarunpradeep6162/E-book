@@ -1,16 +1,19 @@
 # Chapter 2: Terraform Without Guesswork: Build a Reproducible Foundation
 
+::: {.callout .failure}
 ## The Apply That Removed the Emergency Fix
 
 At 11:40, customers stop receiving order confirmations. During yesterday’s incident, an engineer added an AWS security-group rule through the console so the API could reach PostgreSQL on port 5432. Another engineer changed the application’s database endpoint manually.
 
 Neither change reached Git. This morning’s routine Terraform plan proposed removing the extra rule from a security group whose rules were managed inline. The reviewer saw a small network change and approved it.
+:::
 
 The apply completed successfully. Database connections failed, retries saturated the API, and order processing stopped.
 
 Terraform did not misunderstand the emergency fix. The team misunderstood ownership: configuration still declared the previous rules, and reconciliation removed the console-added access.
 
 **A successful apply proves that Terraform completed its requested operations. It does not prove that your architecture still works.**
+
 
 ## Configuration, State, and Reality
 
@@ -298,8 +301,11 @@ Terraform is not a transaction across AWS resources. An apply can partially succ
 
 For this lab, preserve local state, exclude it and plans from Git, and keep a single authorized operator. Cleanup requires deliberately removing the marker’s current and historical versions before destroying the bucket; `force_destroy = false` prevents automatic data purging.
 
-## Key Takeaways
+::: {.callout .protip}
+Commit the provider lock file and review upgrades as changes to the execution toolchain.
+:::
 
+::: {.callout .takeaways}
 - **Configuration, state, and observed infrastructure serve different roles.** Refreshing state does not adopt console changes into HCL.
 - **Terraform executes dependencies, not file order.** References create natural edges; explicit dependencies describe hidden prerequisites.
 - **Resources own lifecycle; data sources read information.** Mutable queries can weaken reproducibility.
@@ -307,6 +313,7 @@ For this lab, preserve local state, exclude it and plans from Git, and keep a si
 - **Validate contracts early.** Typed objects and regex checks prevent avoidable deployment mistakes.
 - **Treat credentials, state, and plans as sensitive.** Use scoped short-lived identities and verify the target account.
 - **Review effects, not just success messages.** Apply approved plans, verify convergence, and test application behavior.
+:::
 
 ## References
 

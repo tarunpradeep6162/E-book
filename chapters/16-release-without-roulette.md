@@ -1,10 +1,18 @@
 # Chapter 16: Release Without Roulette: Deployments, Promotion, and Rollback
 
+::: {.callout .failure}
 ## Green Pods, Unusable Service
 
 The new release starts successfully, and its readiness endpoint returns 200 before configuration and database initialization finish. During a rolling update, Kubernetes considers the new replicas ready and removes old capacity. User requests fail even though the deployment reports progress.
 
 A readiness endpoint pointing at a nonexistent path would normally block progress instead; the catastrophic case is a probe that incorrectly reports usable capacity. **Readiness must describe the serving contract, not merely the existence of a process.**
+:::
+
+## Architecture at a Glance
+
+![Green serves while Blue is updated and verified; traffic switches only after the release gate.](images/16-blue-green.svg){width=100%}
+
+
 
 ## Package Configuration Without Rebuilding
 
@@ -178,14 +186,18 @@ This discipline makes deployment a controlled change in service behavior, rather
 
 Record observation-window results before promotion, including whether background workers completed successfully under the candidate configuration and schema.
 
-## Key Takeaways
+::: {.callout .protip}
+Preserve schema compatibility while old and new application versions coexist.
+:::
 
+::: {.callout .takeaways}
 - **Promote the same image digest with reviewed environment configuration.**
 - **Readiness must reflect usable serving capacity.**
 - **Rolling updates need spare capacity and graceful termination.**
 - **Canary weighting requires an actual traffic-control mechanism.**
 - **Application rollback does not reverse database side effects.**
 - **Verify complete order workflows through the real entry point.**
+:::
 
 ## References
 

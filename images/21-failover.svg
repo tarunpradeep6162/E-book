@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="960" height="610" preserveAspectRatio="xMinYMin meet" viewBox="0 0 960 610" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="960" height="610"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-610)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="960" height="610" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="24" y="568" style="font-family: Helvetica-Bold; font-size: 25px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,1136) scale(1,-1)">Active-passive recovery: promotion follows fencing</text>
+			<text x="24" y="540" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,1080) scale(1,-1)">Self-managed PostgreSQL standby; asynchronous replication and explicit approvals.</text>
+			<rect x="30" y="310" width="280" height="160" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="46" y="442" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,884) scale(1,-1)">1. Normal</text>
+			<text x="46" y="418" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,836) scale(1,-1)">AWS owns writes</text>
+			<text x="46" y="398" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,796) scale(1,-1)">Azure replays standby WAL</text>
+			<path d="M 310,390 L 340,390 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="340 390, 331.7105 393.5048, 331.7105 386.4952" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<rect x="340" y="310" width="280" height="160" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(100%,94%,94%); fill-rule: evenodd;"/>
+			<text x="356" y="442" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,884) scale(1,-1)">2. Outage / stop</text>
+			<text x="356" y="418" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,836) scale(1,-1)">Do not assume primary is fenced</text>
+			<text x="356" y="398" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,796) scale(1,-1)">Assess lag; stop unsafe writes</text>
+			<path d="M 620,390 L 650,390 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="650 390, 641.7105 393.5048, 641.7105 386.4952" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<rect x="650" y="310" width="280" height="160" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="666" y="442" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,884) scale(1,-1)">3. Fence</text>
+			<text x="666" y="418" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,836) scale(1,-1)">Confirm old writer cannot resume</text>
+			<text x="666" y="398" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,796) scale(1,-1)">Approve accepted recovery gap</text>
+			<rect x="30" y="90" width="280" height="160" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="46" y="222" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,444) scale(1,-1)">4. Promote</text>
+			<text x="46" y="198" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,396) scale(1,-1)">Azure becomes the only writer</text>
+			<text x="46" y="178" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,356) scale(1,-1)">Verify durable synthetic write</text>
+			<path d="M 310,170 L 340,170 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="340 170, 331.7105 173.5048, 331.7105 166.4952" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<rect x="340" y="90" width="280" height="160" rx="10" ry="10" style="stroke: rgb(79%,83%,88%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="356" y="222" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,444) scale(1,-1)">5. Route + verify</text>
+			<text x="356" y="198" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,396) scale(1,-1)">Shift DNS; account for caches</text>
+			<text x="356" y="178" style="font-family: Helvetica; font-size: 13px;fill: rgb(27%,33%,41%); stroke:none;" transform="translate(0,356) scale(1,-1)">Verify API + worker; measure RPO/RTO</text>
+			<path d="M 790,310 L 170,250 Z" style="stroke: rgb(36%,20%,69%); stroke-linecap: butt; stroke-width: 2; stroke-dasharray: 5, 4;"/>
+			<polygon points="170 250, 178.5886 247.31, 177.9134 254.287" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(36%,20%,69%); fill-rule: evenodd;"/>
+			<text x="488.0" y="290.0" style="font-family: Helvetica; font-size: 12px;fill: rgb(36%,20%,69%); stroke:none;" transform="translate(0,580) scale(1,-1)">Decision gate</text>
+			<text x="30" y="40" style="font-family: Helvetica-Bold; font-size: 14px;fill: rgb(72%,10%,10%); stroke:none;" transform="translate(0,80) scale(1,-1)">Book targets: RPO &lt;= 5 minutes; RTO &lt;= 60 minutes. Targets require measured evidence.</text>
+		</g>
+	</g>
+</svg>

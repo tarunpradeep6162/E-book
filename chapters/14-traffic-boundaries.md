@@ -1,10 +1,12 @@
 # Chapter 14: Traffic Has Boundaries: TLS, Network Policies, and FortiGate
 
+::: {.callout .failure}
 ## One Container, Every Database
 
 An attacker exploits an exposed API dependency. From that container, the attacker connects to billing, administration, and the database because the cluster has no enforced traffic policy. Network reachability expands a single application flaw into a platform incident.
 
 A VPC perimeter firewall did not see the Pod-to-Pod path. The security diagram showed a firewall icon but never demonstrated packet traversal. **Controls protect traffic only where they are actually enforced.**
+:::
 
 ## North-South and East-West Are Design Categories
 
@@ -174,14 +176,18 @@ The final evidence should show a working permitted transaction, a denied unautho
 
 Repeat the negative connectivity test after policy upgrades; successful enforcement last month does not verify the current network implementation.
 
-## Key Takeaways
+::: {.callout .protip}
+Test allowed and denied paths on a network implementation that enforces NetworkPolicy.
+:::
 
+::: {.callout .takeaways}
 - **Prove enforcement, not just successful YAML creation.**
 - **NetworkPolicies are additive and selector placement matters.**
 - **Default deny needs explicit DNS and dependency allowances.**
 - **TLS, routing, and application authorization are separate controls.**
 - **FortiGate inspection requires tested forward and return paths.**
 - **Version and rehearse recovery of policies and appliance configuration.**
+:::
 
 ## References
 

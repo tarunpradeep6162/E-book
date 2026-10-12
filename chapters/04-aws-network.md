@@ -1,12 +1,21 @@
 # Chapter 4: AWS from Zero: Provision a Network You Can Explain
 
+::: {.callout .failure}
 ## The Database That Answered the Internet
 
 The startup's order database disappears during lunch. An attacker connected to a PostgreSQL listener exposed through a public address, guessed an administrative password, and deleted the tables. A note demands payment for a recovery key that does not exist.
 
 The database sat in a public subnet because the engineer copied the application server's launch settings. Its security group allowed port 5432 from everywhere to simplify testing. No restore exercise had verified the backup.
+:::
 
 A public subnet alone does not expose a database: public addressing, routing, permissive controls, and a listening service complete the path. That distinction matters because deleting an Internet Gateway route will not fix stolen credentials or recover data. **Prevent exposure at multiple boundaries, and recover from independently protected backups.**
+
+
+## Architecture at a Glance
+
+![The conceptual production layout keeps the database private; the executable chapter lab is smaller.](images/04-vpc.svg){width=100%}
+
+
 
 ## A Route Is a Decision
 
@@ -31,6 +40,18 @@ SSM Session Manager needs an instance profile, the SSM agent, service connectivi
 ## Provision the Lab Root
 
 Use Chapter 2's pinned AWS provider and Chapter 3's independently bootstrapped backend. This example is a separate root, not another file inside the backend bootstrap. Choose a currently supported AMI with SSM Agent installed, and verify the instance architecture matches it.
+
+### First, Read the Smallest Contract
+
+```hcl
+resource "aws_vpc" "lab" {
+  cidr_block = "10.40.0.0/16"
+  enable_dns_support = true
+  enable_dns_hostnames = true
+}
+```
+
+This defines the address domain. It does not create subnets, routing, or a safe administrative path. The complete files below add those responsibilities.
 
 ### network.tf
 
@@ -192,14 +213,18 @@ Use VPC Flow Logs where appropriate to inspect accepted or rejected flows, under
 
 The lab acceptance record should contain both a successful administrative session and evidence that unsolicited inbound access remains unavailable. This makes the security claim measurable instead of relying on a diagram.
 
-## Key Takeaways
+::: {.callout .protip}
+Test a successful SSM session and a denied unsolicited inbound connection.
+:::
 
+::: {.callout .takeaways}
 - **Routing, addressing, and authorization are separate controls.**
 - **A private subnet needs an intentional outbound and administrative path.**
 - **SSM requires identity, agent health, and connectivity.**
 - **Keep databases private and restrict callers by workload identity and security group.**
 - **Label single-AZ labs honestly; design multi-AZ production deliberately.**
 - **Test both permitted and denied paths, then clean up chargeable resources.**
+:::
 
 ## References
 

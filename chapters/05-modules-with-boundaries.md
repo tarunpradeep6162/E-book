@@ -1,12 +1,15 @@
 # Chapter 5: Modules with Boundaries: Reuse Infrastructure Without Coupling Everything
 
+::: {.callout .failure}
 ## A Development Tag That Replaced Production
 
 The engineer changed `environment = "dev"` to clean up inconsistent tags. The same root generated names for development and production load balancers. A poorly chosen `for_each` key included the environment value, so Terraform interpreted the change as removing old resource addresses and creating new ones.
 
 The reviewed plan contained replacements. The pipeline applied them with production credentials because everything shared one state. A development housekeeping request became a production outage.
+:::
 
 A tag update does not inherently destroy a load balancer. The failure was the surrounding address and naming design, combined with an overly broad ownership boundary. **Do not make harmless metadata define resource identity unless replacement is intentional.**
+
 
 ## Root Modules Are Operational Boundaries
 
@@ -217,14 +220,18 @@ Treat output changes as interface changes. Renaming a subnet key can break downs
 
 Ownership is also a contract. If the network module begins creating routes previously managed by another root, coordinate the transfer before either writer applies. The source-code refactor is the easy part; resource adoption and exclusive authority determine whether production survives it.
 
-## Key Takeaways
+::: {.callout .protip}
+Use stable module keys for identity and separate roots for different trust boundaries.
+:::
 
+::: {.callout .takeaways}
 - **Child modules organize code; roots establish execution ownership.**
 - **Separate production identities, backends, and approvals.**
 - **Workspaces do not create security boundaries.**
 - **Stable keys preserve identity during metadata changes.**
 - **Pin module sources independently of providers.**
 - **Review address migrations and recovery paths before upgrades.**
+:::
 
 ## References
 

@@ -1,12 +1,15 @@
 # Chapter 11: Terraform Through CI: Approve the Change You Actually Apply
 
+::: {.callout .failure}
 ## Approval Covered a Different Plan
 
 The engineer reviewed a local plan showing one security-group change. Before CI ran, another administrator modified the database configuration. The pipeline generated a fresh plan and applied it automatically, including a database replacement nobody approved.
 
 The dangerous action came from executing a newly generated plan, not from Terraform magically changing an approved saved plan. A saved plan whose state has become stale can be rejected. External changes outside state still require coordination and reconciliation.
+:::
 
 **An approval must identify the exact execution artifact, source revision, environment, and identity.** Infrastructure approval is not a generic permission to run the latest branch.
+
 
 ## Plan Files Are Sensitive Execution Artifacts
 
@@ -30,7 +33,23 @@ The example requires a trusted isolated agent with pinned Terraform and a scoped
 
 Jenkins authorization must restrict job edits, source references, and the `platform-approvers` group. Adapt the submitter to your configured security realm. A string in a Jenkinsfile does not create that group.
 
+### First, Read the Smallest Contract
+
+```bash
+terraform init -lockfile=readonly
+terraform validate
+terraform plan -out=tfplan
+terraform show tfplan
+# Review before applying this exact file.
+```
+
+These commands establish the plan artifact. The complete Jenkins workflow below adds protected storage, approval, identity checks, and serialization.
+
 ### Jenkinsfile
+
+Read these panels in sequence. They continue the same file; use the complete companion source when executing.
+
+### Identity and plan generation
 
 ```groovy
 pipeline {
@@ -65,6 +84,11 @@ terraform version
         dir("${env.TF_ROOT}") {
           sh '''#!/usr/bin/env bash
 set -euo pipefail
+```
+
+### Protected approval and applying the saved plan
+
+```groovy
 umask 077
 terraform init -lockfile=readonly
 terraform fmt -check -recursive
@@ -97,6 +121,11 @@ sha256sum --check tfplan.sha256
 # No fresh planning command and no -auto-approve are needed here.
 terraform apply -lock-timeout=120s tfplan
 '''
+```
+
+### Convergence and cleanup
+
+```groovy
         }
       }
     }
@@ -134,7 +163,9 @@ Plan policy should flag deletions, replacements, public access, IAM privilege ex
 
 ## Partial Apply Is an Incident Condition
 
+::: {.callout .failure}
 Terraform is not a transaction that rolls back every AWS operation when one resource fails. Some resources may be created or updated before another operation errors. The state can record successful operations while the overall apply reports failure.
+:::
 
 Preserve logs and inspect the authoritative state. Determine which actions completed, identify the failed dependency, and re-plan after correcting the cause. Do not blindly rerun the original saved plan or restore an older state snapshot to hide partial progress.
 
@@ -168,14 +199,18 @@ The approval record should explain why destructive actions are acceptable and wh
 
 Require the approver to identify the protected build record explicitly; approval in a separate chat message is not the execution gate.
 
-## Key Takeaways
+::: {.callout .protip}
+Apply the saved approved plan; stale assumptions require a new review.
+:::
 
+::: {.callout .takeaways}
 - **Approve a concrete saved plan, not a moving branch or general intent.**
 - **Protect plans as sensitive artifacts.**
 - **Re-plan and re-approve when assumptions become stale.**
 - **Serialize execution and coordinate every other writer.**
 - **Partial apply requires investigation, not assumed rollback.**
 - **Verify application behavior after infrastructure convergence.**
+:::
 
 ## References
 

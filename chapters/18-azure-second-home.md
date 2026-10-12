@@ -1,10 +1,12 @@
 # Chapter 18: Azure as a Second Home: Port the Platform Without Pretending Clouds Match
 
+::: {.callout .failure}
 ## Renaming Resources Did Not Port the Network
 
 The engineer replaces `aws_vpc` with an Azure-looking resource name and expects the same subnet, identity, and routing behavior. Terraform rejects the configuration. The next attempt creates AKS but fails because the cluster identity lacks permission on its selected subnet.
 
 Cloud portability is not text substitution. Similar architectural roles have different APIs, identity models, defaults, and operational constraints. **Reuse application contracts where they are stable; implement cloud-specific infrastructure honestly.**
+:::
 
 ## Map Responsibilities, Not Resource Names
 
@@ -26,6 +28,17 @@ Use separate Azure roots, provider locks, backend credentials, and subscriptions
 This example uses Azure CNI overlay with Cilium for network policy enforcement. Pod address ranges and service ranges must not overlap the VNet or connected networks. Confirm the chosen region, version, and network configuration are supported before deployment.
 
 The example assumes an existing delegated application subnet and an existing user-assigned cluster identity authorized to use it. That keeps network ownership separate. Grant the identity the required network role at the intended scope through a reviewed bootstrap step, not an unrestricted subscription-wide assignment.
+
+### First, Read the Smallest Contract
+
+```hcl
+resource "azurerm_resource_group" "platform" {
+  name     = "orders-platform-lab"
+  location = "centralindia"
+}
+```
+
+Begin with Azure resource ownership. The full AKS configuration below adds the subscription context, network, cluster identity, private endpoint, and workload federation.
 
 ### aks.tf
 
@@ -176,14 +189,18 @@ Before accepting Azure as the recovery site, prove its control path is independe
 
 Verify the recovery operator can resolve the private endpoint from the approved network without using primary-cloud DNS dependencies.
 
-## Key Takeaways
+::: {.callout .protip}
+Test the Azure recovery control path while primary-cloud dependencies are unavailable.
+:::
 
+::: {.callout .takeaways}
 - **Map architectural responsibilities, not API names.**
 - **Keep Azure state, subscriptions, and identities independently owned.**
 - **Workload federation and resource permissions are separate steps.**
 - **Private AKS access requires tested DNS and connectivity.**
 - **Copy approved images without rebuilding and verify destination identity.**
 - **Test cloud-specific networking, storage, upgrades, and recovery.**
+:::
 
 ## References
 

@@ -1,12 +1,15 @@
 # Chapter 10: From Commit to Trusted Image: Write the Jenkinsfile
 
+::: {.callout .failure}
 ## Latest Was Not the Release
 
 A pipeline pushes an untested image as `orders-api:latest`. Production restarts a pod and pulls that tag. Some replicas run yesterday's image, others run the new one. The deployment record still says `latest`, so nobody can identify the actual code consistently.
 
 The team rolls back the deployment YAML. It still points at `latest`. The new image is fetched again, and the incident continues.
+:::
 
 A tag is a name that can change. A registry digest identifies content. **Build evidence must name the exact image that passed the checks and the exact image deployed.** Git-commit tags help humans navigate, but immutable registry policy and digest promotion establish stronger identity.
+
 
 ## Define the Pipeline's Contract
 
@@ -22,7 +25,23 @@ ECR must have an immutable-tag policy for this repository. Its lifecycle policy 
 
 The following values are examples to replace in reviewed pipeline configuration. `PYTHON_BASE` must contain a verified digest. It is not a user-supplied parameter that an untrusted job can alter.
 
+### First, Read the Smallest Contract
+
+```groovy
+stage('Test') {
+  steps {
+    sh 'python3 -m unittest discover -s tests'
+  }
+}
+```
+
+Start with test execution. This excerpt is not the release gate: the complete pipeline additionally rejects zero tests, tests the image, scans it, and records the ECR digest.
+
 ### Jenkinsfile
+
+Read these panels in sequence. They continue the same file; use the complete companion source when executing.
+
+### Pipeline envelope and source identity
 
 ```groovy
 pipeline {
@@ -57,6 +76,11 @@ pipeline {
         }
       }
     }
+```
+
+### Tests and runtime verification
+
+```groovy
     stage('Test source') {
       steps {
         sh '''#!/usr/bin/env bash
@@ -89,6 +113,11 @@ for attempt in {1..20}; do
 done
 docker logs "$cid"
 exit 1
+```
+
+### Security evidence and registry publication
+
+```groovy
 '''
       }
     }
@@ -121,6 +150,11 @@ docker push "$IMAGE"
 # Resolve registry identity, rather than treating the tag as the release.
 aws ecr describe-images --region "$AWS_REGION" \
   --repository-name "$ECR_REPOSITORY" \
+```
+
+### Digest evidence and cleanup
+
+```groovy
   --image-ids imageTag="$REVISION" \
   --query 'imageDetails[0].imageDigest' --output text \
   > evidence/image-digest.txt
@@ -188,14 +222,18 @@ These controls close a practical gap: a good test report is useful only if the d
 
 Retain the registry verification result with the build record so recovery operators can retrieve the artifact without relying on mutable branch names.
 
-## Key Takeaways
+::: {.callout .protip}
+Bind the published digest to the tested image and preserve its evidence record.
+:::
 
+::: {.callout .takeaways}
 - **Tags are labels; digests identify the promoted artifact.**
 - **Testing, runtime checks, scanning, and publication have separate gates.**
 - **Zero tests and unavailable scanners must not silently pass.**
 - **Keep publishing credentials off untrusted pull-request agents.**
 - **Preserve evidence and retain deployed image digests.**
 - **Provenance and signing complement testing; neither replaces it.**
+:::
 
 ## References
 

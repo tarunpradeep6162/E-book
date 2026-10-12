@@ -1,12 +1,15 @@
 # Chapter 7: Containers Die; Data Must Survive: Understand Docker Storage
 
+::: {.callout .failure}
 ## The Image Update That Deleted Orders
 
 The engineer pulls a newer PostgreSQL image, removes the old container, and launches a replacement. Startup succeeds. The application connects successfully. Every customer order is gone.
 
 PostgreSQL had written its data directory into the old container's writable layer. Removing that container deleted the only copy. The team mistook a running database process for protected data.
+:::
 
 Restarting a container ordinarily preserves its writable layer; deleting and replacing it does not. Distinguish those operations before writing a runbook. **Data survival must be demonstrated across replacement, not inferred from restart success.**
+
 
 ## Three Storage Lifecycles
 
@@ -110,7 +113,9 @@ docker compose exec -T db psql -U orders_admin -d orders \
 
 The row must remain. Record the volume mount before and after replacement. If a new empty database appears, inspect the actual mount and project naming before touching either volume; your old data may still exist under a different name.
 
+::: {.callout .failure}
 `docker compose down --volumes`, `docker volume rm`, and some cleanup workflows intentionally delete volume data. Routine application deployment must not include those operations. A broad pruning command can also remove unused volumes; an unmounted recovery volume is still valuable.
+:::
 
 ## Backup Is an Application Operation
 
@@ -163,14 +168,18 @@ Record the initialized database identifier and schema revision in operational in
 
 This protects against a common failure: the system looks available while silently accepting new orders into a different database. Recovery then becomes reconciliation of two write histories rather than restoration of one missing service.
 
-## Key Takeaways
+::: {.callout .protip}
+Prove data survives container replacement and a separate backup restoration.
+:::
 
+::: {.callout .takeaways}
 - **Container restart and container replacement have different data consequences.**
 - **Named volumes outlive containers, not necessarily hosts.**
 - **Match mount paths and ownership to the selected image version.**
 - **Do not copy live database files casually or use world-writable permissions.**
 - **Prove both replacement survival and restoration from backup.**
 - **Treat volume deletion and database upgrades as deliberate operations.**
+:::
 
 ## References
 

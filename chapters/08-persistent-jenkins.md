@@ -1,12 +1,21 @@
 # Chapter 8: Jenkins That Survives Monday: Docker Volume Persistence on EC2
 
+::: {.callout .failure}
 ## The Spot Termination That Erased CI
 
 A Spot interruption terminates the EC2 instance hosting Jenkins. The replacement image contains Docker and Jenkins, but no jobs, plugins, credentials, or build history. Every deployment pipeline depended on files inside the terminated instance's root disk.
 
 The root EBS volume was configured to delete on termination. The team had a container restart policy and believed it had persistence. That policy restarts a process on a surviving host; it does not recover a deleted disk.
+:::
 
 **Ephemeral compute requires separately owned storage and independently recoverable backups.** A retained EBS volume addresses one failure boundary. An AZ outage, encryption-key loss, or compromised administrator still demands a different recovery path.
+
+
+## Architecture at a Glance
+
+![Controller compute is replaceable; its verified mount and recovery copies have independent lifecycles.](images/08-jenkins-storage.svg){width=100%}
+
+
 
 ## Own the Controller's Data
 
@@ -33,7 +42,9 @@ sudo wipefs --no-act "$JENKINS_DEVICE"
 sudo blkid "$JENKINS_DEVICE" || true
 ```
 
+::: {.callout .failure}
 `wipefs --no-act` inspects signatures without erasing them. If a filesystem exists, stop and investigate. A restored EBS volume should be mounted, not formatted. Formatting is a destructive one-time action on a confirmed blank lab disk.
+:::
 
 ```bash
 # DESTRUCTIVE: only for a verified new empty EBS volume.
@@ -155,14 +166,18 @@ Finally, record the image digest and plugin inventory used with each recovery po
 
 A restore drill should also verify filesystem ownership after attachment; matching the volume ID does not guarantee Jenkins can read its home.
 
-## Key Takeaways
+::: {.callout .protip}
+Require the real EBS mount before starting Jenkins; an empty directory is not persistence.
+:::
 
+::: {.callout .takeaways}
 - **A restart policy is not persistence or disaster recovery.**
 - **Retain encrypted controller storage separately from disposable compute.**
 - **Identify a blank disk before formatting; never format restored data.**
 - **Require the real mount before starting Jenkins.**
 - **Keep controller access private and build execution isolated.**
 - **Test container, host, and AZ recovery as different failure scenarios.**
+:::
 
 ## References
 

@@ -1,10 +1,12 @@
 # Chapter 17: Scale What You Can Measure: Reliability and Observability
 
+::: {.callout .failure}
 ## Fifty Replicas, One Exhausted Database
 
 The API becomes CPU-bound during a promotion. HPA adds replicas, each opening a large PostgreSQL connection pool. The database reaches its connection limit, queries queue, and every new Pod increases the pressure.
 
 The autoscaler followed its CPU signal. The architecture failed to bound downstream demand. **Scaling the caller is not the same as increasing end-to-end capacity.** Observe the bottleneck before deciding which component should grow.
+:::
 
 ## Define the Service's Evidence
 
@@ -156,14 +158,18 @@ Preserve the dataset size, index state, and query mix used in the benchmark. Per
 
 Use the measured safe envelope to set admission limits before traffic exceeds it, rather than waiting for database exhaustion.
 
-## Key Takeaways
+::: {.callout .protip}
+Bound replica count and connection pools against measured database capacity.
+:::
 
+::: {.callout .takeaways}
 - **Observe the complete transaction path before scaling callers.**
 - **Bound replicas and connection pools together.**
 - **HPA needs meaningful requests, metrics, and capacity.**
 - **PDBs constrain voluntary disruption, not every failure.**
 - **Alert on actionable impact and test notification delivery.**
 - **Record a measured capacity envelope and recovery behavior.**
+:::
 
 ## References
 

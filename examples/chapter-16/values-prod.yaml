@@ -1,0 +1,12 @@
+image:
+  repository: registry.example/orders-api
+  digest: sha256:REPLACE_SAME_REVIEWED_DIGEST
+replicaCount: 3
+resources:
+  requests: {cpu: 250m, memory: 256Mi}
+  limits: {cpu: 1000m, memory: 512Mi}
+rollout:
+  maxSurge: 1
+  maxUnavailable: 0
+config:
+  logLevel: info

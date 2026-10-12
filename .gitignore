@@ -1,0 +1,12 @@
+dist/
+.build/
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+**/terraform.tfvars
+.env
+*.pem
+*.key
+__pycache__/
+*.pyc

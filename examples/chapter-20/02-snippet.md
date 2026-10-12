@@ -1,0 +1,12 @@
+# Cross-Cloud Connectivity Gate
+- [ ] All VPC/VNet/Pod/Service ranges checked for overlap
+- [ ] Forward and return routes documented at every hop
+- [ ] Static routing or BGP selected and peer settings matched
+- [ ] Tunnel redundancy and failure detection tested
+- [ ] DNS forwarding domains and loop prevention verified
+- [ ] Caller and destination permissions scoped
+- [ ] Inspection path and bypass denial demonstrated
+- [ ] MTU, MSS, throughput, latency, and reconnect behavior measured
+- [ ] Pre-shared keys stored outside Git and rotation rehearsed
+- [ ] Egress and catch-up bandwidth budget approved
+- [ ] Recovery DNS and administration survive primary-cloud loss

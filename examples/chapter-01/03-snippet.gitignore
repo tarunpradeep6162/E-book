@@ -1,0 +1,18 @@
+# Terraform caches, plans, and state can expose infrastructure and secrets.
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+
+# Preserve examples while excluding local secret-bearing configuration.
+.env
+.env.*
+!.env.example
+
+# Recovery artifacts belong in protected storage, never source control.
+backups/
+*.sql
+*.dump
+*.pem
+*.key

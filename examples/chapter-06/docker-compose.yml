@@ -1,0 +1,26 @@
+services:
+  api:
+    build:
+      context: .
+      args:
+        PYTHON_BASE: ${PYTHON_BASE:?Set an approved Python digest}
+    ports:
+      - "127.0.0.1:8080:8080" # Restrict the development listener.
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 30s
+    environment:
+      PORT: "8080"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/healthz', timeout=2)"
+      interval: 10s
+      timeout: 3s
+      retries: 3

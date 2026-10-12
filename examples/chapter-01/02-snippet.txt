@@ -1,0 +1,13 @@
+platform/
+├── apps/                 # Application code and schema migration code
+├── infra/
+│   ├── bootstrap/        # State storage and foundational access
+│   ├── modules/          # Reusable resource definitions
+│   └── environments/     # Independent cloud/environment roots
+├── config/environments/  # Non-secret values and secret references
+├── deploy/               # Compose and Kubernetes workload definitions
+├── ci/                   # Jenkinsfiles and agent configuration
+├── docs/
+│   ├── architecture/     # Contracts, dependencies, threats, acceptance gates
+│   └── runbooks/         # Procedures executable by another engineer
+└── tests/architecture/   # Boundary and recovery verification

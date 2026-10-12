@@ -1,0 +1,653 @@
+[
+  {
+    "chapter": 1,
+    "file": "examples/chapter-01/01-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 1,
+    "file": "examples/chapter-01/02-snippet.txt",
+    "language": "text",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 1,
+    "file": "examples/chapter-01/03-snippet.gitignore",
+    "language": "gitignore",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 1,
+    "file": "examples/chapter-01/04-snippet.md",
+    "language": "markdown",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 1,
+    "file": "examples/chapter-01/05-snippet.md",
+    "language": "markdown",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 2,
+    "file": "examples/chapter-02/01-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 2,
+    "file": "examples/chapter-02/02-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 2,
+    "file": "examples/chapter-02/providers.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 2,
+    "file": "examples/chapter-02/variables.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 2,
+    "file": "examples/chapter-02/main.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 2,
+    "file": "examples/chapter-02/06-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 2,
+    "file": "examples/chapter-02/07-main.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 2,
+    "file": "examples/chapter-02/08-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 2,
+    "file": "examples/chapter-02/09-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 3,
+    "file": "examples/chapter-03/backend-bootstrap.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 3,
+    "file": "examples/chapter-03/backend.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 3,
+    "file": "examples/chapter-03/03-backend.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 3,
+    "file": "examples/chapter-03/04-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 3,
+    "file": "examples/chapter-03/05-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 4,
+    "file": "examples/chapter-04/network.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 4,
+    "file": "examples/chapter-04/access.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 4,
+    "file": "examples/chapter-04/03-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 5,
+    "file": "examples/chapter-05/01-snippet.txt",
+    "language": "text",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 5,
+    "file": "examples/chapter-05/modules__network__versions.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 5,
+    "file": "examples/chapter-05/modules__network__variables.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 5,
+    "file": "examples/chapter-05/modules__network__main.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 5,
+    "file": "examples/chapter-05/modules__network__outputs.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 5,
+    "file": "examples/chapter-05/environments__dev__main.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 5,
+    "file": "examples/chapter-05/environments__prod__main.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 5,
+    "file": "examples/chapter-05/08-environments__prod__main.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 6,
+    "file": "examples/chapter-06/app.py",
+    "language": "python",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 6,
+    "file": "examples/chapter-06/Dockerfile",
+    "language": "dockerfile",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 6,
+    "file": "examples/chapter-06/03-snippet.txt",
+    "language": "text",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 6,
+    "file": "examples/chapter-06/docker-compose.yml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 6,
+    "file": "examples/chapter-06/05-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 6,
+    "file": "examples/chapter-06/06-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 7,
+    "file": "examples/chapter-07/01-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 7,
+    "file": "examples/chapter-07/docker-compose.yml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 7,
+    "file": "examples/chapter-07/03-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 7,
+    "file": "examples/chapter-07/04-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 7,
+    "file": "examples/chapter-07/05-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 7,
+    "file": "examples/chapter-07/06-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 8,
+    "file": "examples/chapter-08/01-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 8,
+    "file": "examples/chapter-08/02-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 8,
+    "file": "examples/chapter-08/03-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 8,
+    "file": "examples/chapter-08/04-snippet.ini",
+    "language": "ini",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 8,
+    "file": "examples/chapter-08/05-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 8,
+    "file": "examples/chapter-08/06-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 8,
+    "file": "examples/chapter-08/07-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 9,
+    "file": "examples/chapter-09/jenkins.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 9,
+    "file": "examples/chapter-09/agent-roles.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 10,
+    "file": "examples/chapter-10/Jenkinsfile",
+    "language": "groovy",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 11,
+    "file": "examples/chapter-11/Jenkinsfile",
+    "language": "groovy",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 12,
+    "file": "examples/chapter-12/namespace.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 12,
+    "file": "examples/chapter-12/deployment.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 12,
+    "file": "examples/chapter-12/service.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 12,
+    "file": "examples/chapter-12/04-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 12,
+    "file": "examples/chapter-12/05-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 13,
+    "file": "examples/chapter-13/eks.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 13,
+    "file": "examples/chapter-13/worker-identity.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 13,
+    "file": "examples/chapter-13/worker-service-account.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 13,
+    "file": "examples/chapter-13/04-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 14,
+    "file": "examples/chapter-14/default-deny.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 14,
+    "file": "examples/chapter-14/allow-frontend.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 14,
+    "file": "examples/chapter-14/allow-api-egress.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 14,
+    "file": "examples/chapter-14/04-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 15,
+    "file": "examples/chapter-15/storage-class.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 15,
+    "file": "examples/chapter-15/postgres.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 15,
+    "file": "examples/chapter-15/03-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 16,
+    "file": "examples/chapter-16/values-dev.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 16,
+    "file": "examples/chapter-16/values-prod.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 16,
+    "file": "examples/chapter-16/templates__deployment.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 16,
+    "file": "examples/chapter-16/04-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 17,
+    "file": "examples/chapter-17/hpa.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 17,
+    "file": "examples/chapter-17/pdb.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 17,
+    "file": "examples/chapter-17/03-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 18,
+    "file": "examples/chapter-18/aks.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 18,
+    "file": "examples/chapter-18/worker-identity.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 18,
+    "file": "examples/chapter-18/03-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 19,
+    "file": "examples/chapter-19/gke.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 19,
+    "file": "examples/chapter-19/02-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 20,
+    "file": "examples/chapter-20/vpn.tf",
+    "language": "hcl",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 20,
+    "file": "examples/chapter-20/02-snippet.md",
+    "language": "markdown",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 21,
+    "file": "examples/chapter-21/01-snippet.md",
+    "language": "markdown",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 21,
+    "file": "examples/chapter-21/02-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 21,
+    "file": "examples/chapter-21/03-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 21,
+    "file": "examples/chapter-21/04-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 21,
+    "file": "examples/chapter-21/05-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 22,
+    "file": "examples/chapter-22/01-snippet.md",
+    "language": "markdown",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 22,
+    "file": "examples/chapter-22/02-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": true
+  },
+  {
+    "chapter": 22,
+    "file": "examples/chapter-22/deny-database-egress.yaml",
+    "language": "yaml",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 22,
+    "file": "examples/chapter-22/04-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  },
+  {
+    "chapter": 22,
+    "file": "examples/chapter-22/05-snippet.sh",
+    "language": "bash",
+    "status": "Requires chapter prerequisites; snippets may be partial",
+    "placeholders": false
+  }
+]

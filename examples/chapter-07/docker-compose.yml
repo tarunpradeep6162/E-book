@@ -1,0 +1,26 @@
+services:
+  db:
+    image: ${POSTGRES_IMAGE:?Set a reviewed PostgreSQL 17 digest}
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: orders
+      POSTGRES_USER: orders_admin
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_password
+    volumes:
+      - orders_data:/var/lib/postgresql/data
+    # No host port: only approved local containers need this database.
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U orders_admin -d orders"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    stop_grace_period: 60s
+volumes:
+  orders_data:
+    # A stable name makes project-directory changes less surprising.
+    name: orders_lab_pgdata
+secrets:
+  db_password:
+    file: ./secrets/postgres-password

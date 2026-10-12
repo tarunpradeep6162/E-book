@@ -1,0 +1,83 @@
+pipeline {
+  agent { label 'trusted-terraform' }
+  options {
+    skipDefaultCheckout(true)
+    disableConcurrentBuilds()
+    timestamps()
+    timeout(time: 60, unit: 'MINUTES')
+  }
+  environment {
+    TF_IN_AUTOMATION = 'true'
+    TF_INPUT = 'false'
+    AWS_ACCOUNT_ID = '123456789012'
+    TF_ROOT = 'infra/environments/prod/aws/orders'
+  }
+  stages {
+    stage('Checkout and identify') {
+      steps {
+        deleteDir()
+        checkout scm
+        sh '''#!/usr/bin/env bash
+set -euo pipefail
+[ "$(aws sts get-caller-identity --query Account --output text)" = "$AWS_ACCOUNT_ID" ]
+git rev-parse HEAD > revision.txt
+terraform version
+'''
+      }
+    }
+    stage('Plan') {
+      steps {
+        dir("${env.TF_ROOT}") {
+          sh '''#!/usr/bin/env bash
+set -euo pipefail
+umask 077
+terraform init -lockfile=readonly
+terraform fmt -check -recursive
+terraform validate
+terraform plan -lock-timeout=120s -out=tfplan
+terraform show -no-color tfplan > plan-review.txt
+sha256sum tfplan > tfplan.sha256
+'''
+          // Restrict job/artifact readers; these are sensitive artifacts.
+          archiveArtifacts artifacts: 'tfplan,tfplan.sha256,plan-review.txt',
+            fingerprint: true
+        }
+      }
+    }
+    stage('Approve exact plan') {
+      steps {
+        timeout(time: 30, unit: 'MINUTES') {
+          input message: 'Approve this build\'s protected plan and environment?',
+            submitter: 'platform-approvers'
+        }
+      }
+    }
+    stage('Apply approved plan') {
+      steps {
+        dir("${env.TF_ROOT}") {
+          sh '''#!/usr/bin/env bash
+set -euo pipefail
+[ "$(aws sts get-caller-identity --query Account --output text)" = "$AWS_ACCOUNT_ID" ]
+sha256sum --check tfplan.sha256
+# No fresh planning command and no -auto-approve are needed here.
+terraform apply -lock-timeout=120s tfplan
+'''
+        }
+      }
+    }
+    stage('Verify convergence') {
+      steps {
+        dir("${env.TF_ROOT}") {
+          sh '''#!/usr/bin/env bash
+set -euo pipefail
+# This stage fails if further changes remain; investigate partial convergence.
+terraform plan -lock-timeout=120s -detailed-exitcode
+'''
+        }
+      }
+    }
+  }
+  post {
+    always { deleteDir() }
+  }
+}

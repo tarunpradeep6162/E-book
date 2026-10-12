@@ -1,0 +1,11 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: orders-ebs-gp3
+provisioner: ebs.csi.aws.com
+parameters:
+  type: gp3
+  encrypted: "true"
+reclaimPolicy: Retain # Claim deletion must not automatically erase data.
+allowVolumeExpansion: true
+volumeBindingMode: WaitForFirstConsumer

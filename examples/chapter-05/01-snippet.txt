@@ -1,0 +1,18 @@
+platform/
+  modules/
+    network/
+      versions.tf
+      variables.tf
+      main.tf
+      outputs.tf
+  environments/
+    dev/
+      main.tf
+      providers.tf
+      backend.tf
+      terraform.tfvars.example
+    prod/
+      main.tf
+      providers.tf
+      backend.tf
+      terraform.tfvars.example

@@ -1,0 +1,32 @@
+jenkins:
+  systemMessage: "Orders CI - approved revisions only"
+  numExecutors: 0 # The controller never executes builds.
+  mode: EXCLUSIVE
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "bootstrap-admin"
+          password: "${BOOTSTRAP_ADMIN_PASSWORD}"
+  authorizationStrategy:
+    globalMatrix:
+      entries:
+        - user:
+            name: "bootstrap-admin"
+            permissions:
+              - "Overall/Administer"
+  nodes:
+    - permanent:
+        name: "isolated-verification"
+        remoteFS: "/home/jenkins/agent"
+        numExecutors: 1
+        mode: EXCLUSIVE
+        labelString: "untrusted-verification"
+        launcher:
+          inbound:
+            workDirSettings:
+              disabled: false
+              internalDir: "remoting"
+              failIfWorkDirIsMissing: true
+  remotingSecurity:
+    enabled: true
